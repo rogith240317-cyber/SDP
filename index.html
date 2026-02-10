@@ -1,0 +1,1165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About Me - Professional Portfolio</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: #333;
+        }
+
+        /* HEADER & NAVIGATION */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        nav {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: bold;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+            gap: 30px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        nav a:hover {
+            color: #667eea;
+        }
+
+        nav a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            transition: width 0.3s;
+        }
+
+        nav a:hover::after {
+            width: 100%;
+        }
+
+        /* HAMBURGER MENU */
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 5px;
+        }
+
+        .hamburger span {
+            width: 25px;
+            height: 3px;
+            background: #667eea;
+            border-radius: 3px;
+            transition: 0.3s;
+        }
+
+        /* MAIN CONTAINER */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .hero-content h1 {
+            font-size: 48px;
+            color: #333;
+            margin-bottom: 20px;
+            line-height: 1.2;
+        }
+
+        .hero-content h2 {
+            font-size: 24px;
+            color: #667eea;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        .hero-content p {
+            font-size: 16px;
+            color: #666;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        .hero-image {
+            text-align: center;
+        }
+
+        .profile-pic {
+            width: 300px;
+            height: 300px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 150px;
+            box-shadow: 0 10px 40px rgba(102, 126, 234, 0.3);
+            animation: floatAnim 3s ease-in-out infinite;
+        }
+
+        @keyframes floatAnim {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            justify-content: center;
+        }
+
+        .social-links a {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            font-size: 20px;
+            transition: transform 0.3s;
+        }
+
+        .social-links a:hover {
+            transform: scale(1.1) translateY(-5px);
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .btn {
+            padding: 12px 30px;
+            border: none;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #667eea;
+            border: 2px solid #667eea;
+        }
+
+        .btn-secondary:hover {
+            background: #667eea;
+            color: white;
+        }
+
+        /* ABOUT SECTION */
+        .about-section {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .section-title {
+            font-size: 36px;
+            color: #333;
+            margin-bottom: 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .section-title::before {
+            content: '';
+            width: 50px;
+            height: 5px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 3px;
+        }
+
+        .about-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .about-item {
+            display: flex;
+            gap: 20px;
+        }
+
+        .about-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 30px;
+            flex-shrink: 0;
+        }
+
+        .about-content h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .about-content p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* EDUCATION SECTION */
+        .education-section {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .education-timeline {
+            position: relative;
+            padding-left: 40px;
+        }
+
+        .education-timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+        }
+
+        .education-item {
+            margin-bottom: 40px;
+            position: relative;
+        }
+
+        .education-item::before {
+            content: '';
+            position: absolute;
+            left: -40px;
+            top: 5px;
+            width: 20px;
+            height: 20px;
+            background: white;
+            border: 4px solid #667eea;
+            border-radius: 50%;
+        }
+
+        .education-item:hover::before {
+            background: #667eea;
+            box-shadow: 0 0 0 8px rgba(102, 126, 234, 0.1);
+        }
+
+        .education-item h3 {
+            font-size: 22px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .education-item .degree {
+            font-size: 16px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .education-item .institution {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 10px;
+        }
+
+        .education-item .duration {
+            font-size: 14px;
+            color: #999;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .education-item .description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* SKILLS SECTION */
+        .skills-section {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .skill-category {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.05), rgba(118, 75, 162, 0.05));
+            padding: 25px;
+            border-radius: 12px;
+            border-left: 5px solid #667eea;
+        }
+
+        .skill-category h3 {
+            font-size: 18px;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .skill-item {
+            margin-bottom: 20px;
+        }
+
+        .skill-name {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+        }
+
+        .skill-name span:first-child {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .skill-name span:last-child {
+            color: #667eea;
+            font-weight: 600;
+        }
+
+        .skill-bar {
+            width: 100%;
+            height: 10px;
+            background: #e0e0e0;
+            border-radius: 5px;
+            overflow: hidden;
+        }
+
+        .skill-progress {
+            height: 100%;
+            background: linear-gradient(90deg, #667eea, #764ba2);
+            border-radius: 5px;
+            transition: width 0.5s ease;
+        }
+
+        /* ACHIEVEMENTS SECTION */
+        .achievements-section {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .achievements-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+        }
+
+        .achievement-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 30px;
+            border-radius: 12px;
+            text-align: center;
+            transition: transform 0.3s;
+        }
+
+        .achievement-card:hover {
+            transform: translateY(-10px);
+        }
+
+        .achievement-number {
+            font-size: 48px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+
+        .achievement-label {
+            font-size: 16px;
+            opacity: 0.9;
+        }
+
+        /* EXPERIENCE SECTION */
+        .experience-section {
+            background: white;
+            border-radius: 20px;
+            padding: 60px;
+            margin-bottom: 40px;
+            box-shadow: 0 10px 40px rgba(0, 0, 0, 0.1);
+        }
+
+        .experience-item {
+            padding-bottom: 30px;
+            margin-bottom: 30px;
+            border-bottom: 2px solid #f0f0f0;
+        }
+
+        .experience-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .experience-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: start;
+            margin-bottom: 10px;
+        }
+
+        .experience-item h3 {
+            font-size: 20px;
+            color: #333;
+            margin-bottom: 5px;
+        }
+
+        .experience-item .position {
+            font-size: 16px;
+            color: #667eea;
+            font-weight: 600;
+            margin-bottom: 5px;
+        }
+
+        .experience-item .duration {
+            font-size: 14px;
+            color: #999;
+        }
+
+        .experience-item .description {
+            font-size: 14px;
+            color: #666;
+            line-height: 1.6;
+            margin-top: 10px;
+        }
+
+        /* FOOTER */
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: white;
+            text-align: center;
+            padding: 30px 20px;
+            margin-top: 60px;
+        }
+
+        footer p {
+            margin: 0;
+            font-size: 14px;
+        }
+
+        /* RESPONSIVE DESIGN */
+        @media (max-width: 768px) {
+            .hamburger {
+                display: flex;
+            }
+
+            nav ul {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                right: 0;
+                flex-direction: column;
+                background: white;
+                padding: 20px;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                gap: 0;
+            }
+
+            nav ul.active {
+                display: flex;
+            }
+
+            nav a {
+                padding: 10px 0;
+                border-bottom: 1px solid #f0f0f0;
+            }
+
+            .hero {
+                grid-template-columns: 1fr;
+                padding: 40px;
+            }
+
+            .hero-content h1 {
+                font-size: 36px;
+            }
+
+            .profile-pic {
+                width: 200px;
+                height: 200px;
+                font-size: 100px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .about-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .about-section,
+            .education-section,
+            .skills-section,
+            .achievements-section,
+            .experience-section {
+                padding: 30px 20px;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero-content h1 {
+                font-size: 28px;
+            }
+
+            .hero-content h2 {
+                font-size: 18px;
+            }
+
+            .profile-pic {
+                width: 150px;
+                height: 150px;
+                font-size: 80px;
+            }
+
+            .section-title {
+                font-size: 22px;
+            }
+
+            nav ul {
+                top: 70px;
+            }
+        }
+
+        /* ANIMATIONS */
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .fade-in {
+            animation: slideInUp 0.6s ease-out;
+        }
+
+        /* SCROLL REVEAL EFFECT */
+        .scroll-reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.6s ease, transform 0.6s ease;
+        }
+
+        .scroll-reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+    </style>
+</head>
+<body>
+
+<!-- NAVIGATION -->
+<header>
+    <nav>
+        <div class="logo">Portfolio</div>
+        <ul id="navMenu">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#achievements">Achievements</a></li>
+        </ul>
+        <div class="hamburger" id="hamburger">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </nav>
+</header>
+
+<!-- MAIN CONTENT -->
+<div class="container">
+
+    <!-- HERO SECTION -->
+    <section id="home" class="hero fade-in">
+        <div class="hero-content">
+            <h1>Hi, I'm <span style="color: #667eea;">John Smith</span></h1>
+            <h2>Full Stack Web Developer | UI/UX Designer</h2>
+            <p>Welcome to my portfolio! I'm a passionate developer with 5+ years of experience creating beautiful, functional web applications. I specialize in modern web technologies and love turning ideas into reality.</p>
+            
+            <div class="cta-buttons">
+                <button class="btn btn-primary">Download CV</button>
+                <button class="btn btn-secondary">Contact Me</button>
+            </div>
+
+            <div class="social-links">
+                <a href="#" title="LinkedIn">💼</a>
+                <a href="#" title="GitHub">💻</a>
+                <a href="#" title="Twitter">🐦</a>
+                <a href="#" title="Email">✉️</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <div class="profile-pic">👨‍💼</div>
+        </div>
+    </section>
+
+    <!-- ABOUT SECTION -->
+    <section id="about" class="about-section scroll-reveal">
+        <h2 class="section-title">About Me</h2>
+        
+        <p style="font-size: 16px; color: #666; line-height: 1.8; margin-bottom: 30px;">
+            I'm a dedicated web developer passionate about creating exceptional digital experiences. With a strong foundation in both frontend and backend technologies, I enjoy building scalable applications that solve real-world problems. When I'm not coding, you can find me exploring new technologies, contributing to open-source projects, or sharing knowledge with the community.
+        </p>
+
+        <div class="about-grid">
+            <div class="about-item">
+                <div class="about-icon">🎯</div>
+                <div class="about-content">
+                    <h3>Goal-Oriented</h3>
+                    <p>Committed to delivering high-quality solutions that exceed expectations and drive measurable results.</p>
+                </div>
+            </div>
+
+            <div class="about-item">
+                <div class="about-icon">🚀</div>
+                <div class="about-content">
+                    <h3>Innovative Thinker</h3>
+                    <p>Always exploring new technologies and methodologies to stay ahead in the rapidly evolving tech landscape.</p>
+                </div>
+            </div>
+
+            <div class="about-item">
+                <div class="about-icon">🤝</div>
+                <div class="about-content">
+                    <h3>Team Player</h3>
+                    <p>Excellent communicator who thrives in collaborative environments and values teamwork.</p>
+                </div>
+            </div>
+
+            <div class="about-item">
+                <div class="about-icon">💡</div>
+                <div class="about-content">
+                    <h3>Problem Solver</h3>
+                    <p>Creative approach to overcoming challenges with a focus on efficient and elegant solutions.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EDUCATION SECTION -->
+    <section id="education" class="education-section scroll-reveal">
+        <h2 class="section-title">Education</h2>
+
+        <div class="education-timeline">
+            <div class="education-item">
+                <h3>Bachelor of Technology</h3>
+                <div class="degree">B.Tech in Computer Science</div>
+                <div class="institution">🎓 Indian Institute of Technology (IIT) Delhi</div>
+                <div class="duration">📅 2016 - 2020</div>
+                <div class="description">
+                    Completed a comprehensive engineering program focusing on computer science fundamentals, software development, and web technologies. Maintained a CGPA of 8.5/10 and actively participated in coding competitions and tech clubs.
+                </div>
+            </div>
+
+            <div class="education-item">
+                <h3>Advanced Web Development Bootcamp</h3>
+                <div class="degree">Full Stack Web Development Certification</div>
+                <div class="institution">📚 Udemy & Coursera</div>
+                <div class="duration">📅 2020 - 2021</div>
+                <div class="description">
+                    Intensive bootcamp covering modern web development stack including React, Node.js, MongoDB, and cloud deployment. Completed 8+ real-world projects and built a professional portfolio of applications.
+                </div>
+            </div>
+
+            <div class="education-item">
+                <h3>Specialized Certifications</h3>
+                <div class="degree">Professional Certifications</div>
+                <div class="institution">📖 Google & Microsoft</div>
+                <div class="duration">📅 2021 - Present</div>
+                <div class="description">
+                    AWS Certified Solutions Architect, Google Cloud Professional Cloud Architect, and Microsoft Azure Fundamentals. Continuously updating skills with latest industry certifications and advanced courses.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- SKILLS SECTION -->
+    <section id="skills" class="skills-section scroll-reveal">
+        <h2 class="section-title">Skills & Expertise</h2>
+
+        <div class="skills-grid">
+            <!-- Frontend Skills -->
+            <div class="skill-category">
+                <h3>🎨 Frontend Development</h3>
+                
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>HTML5 & CSS3</span>
+                        <span>95%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 95%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>JavaScript (ES6+)</span>
+                        <span>90%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 90%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>React.js</span>
+                        <span>88%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 88%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Vue.js</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Tailwind CSS</span>
+                        <span>92%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 92%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Backend Skills -->
+            <div class="skill-category">
+                <h3>⚙️ Backend Development</h3>
+                
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Node.js</span>
+                        <span>87%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 87%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Express.js</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Python</span>
+                        <span>82%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 82%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>MongoDB</span>
+                        <span>84%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 84%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>PostgreSQL</span>
+                        <span>80%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 80%;"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Tools & Technologies -->
+            <div class="skill-category">
+                <h3>🛠️ Tools & Technologies</h3>
+                
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Git & GitHub</span>
+                        <span>93%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 93%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Docker</span>
+                        <span>78%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 78%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>AWS</span>
+                        <span>85%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 85%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>Firebase</span>
+                        <span>82%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 82%;"></div>
+                    </div>
+                </div>
+
+                <div class="skill-item">
+                    <div class="skill-name">
+                        <span>GraphQL</span>
+                        <span>75%</span>
+                    </div>
+                    <div class="skill-bar">
+                        <div class="skill-progress" style="width: 75%;"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- EXPERIENCE SECTION -->
+    <section id="experience" class="experience-section scroll-reveal">
+        <h2 class="section-title">Professional Experience</h2>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Senior Full Stack Developer</h3>
+                    <div class="position">TechCorp Solutions</div>
+                    <div class="duration">📅 January 2022 - Present</div>
+                </div>
+            </div>
+            <div class="description">
+                • Led development of 10+ full-stack web applications using React, Node.js, and MongoDB<br>
+                • Mentored junior developers and conducted code reviews to maintain high code quality<br>
+                • Optimized application performance, reducing load time by 40%<br>
+                • Implemented CI/CD pipelines using Docker and GitHub Actions<br>
+                • Collaborated with product managers and designers to deliver user-centric solutions
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Full Stack Web Developer</h3>
+                    <div class="position">Digital Innovations Ltd.</div>
+                    <div class="duration">📅 June 2020 - December 2021</div>
+                </div>
+            </div>
+            <div class="description">
+                • Developed responsive web applications using React and Vue.js for 15+ clients<br>
+                • Built RESTful APIs and microservices using Node.js and Express.js<br>
+                • Worked with MongoDB and PostgreSQL databases<br>
+                • Implemented real-time features using WebSockets and Socket.io<br>
+                • Participated in agile development with 2-week sprint cycles
+            </div>
+        </div>
+
+        <div class="experience-item">
+            <div class="experience-header">
+                <div>
+                    <h3>Junior Web Developer</h3>
+                    <div class="position">StartUp Hub</div>
+                    <div class="duration">📅 July 2019 - May 2020</div>
+                </div>
+            </div>
+            <div class="description">
+                • Assisted in developing frontend components using HTML, CSS, and JavaScript<br>
+                • Fixed bugs and implemented features for 5+ web projects<br>
+                • Learned modern development practices and version control with Git<br>
+                • Collaborated with senior developers on full-stack projects<br>
+                • Participated in daily stand-ups and sprint planning meetings
+            </div>
+        </div>
+    </section>
+
+    <!-- ACHIEVEMENTS SECTION -->
+    <section id="achievements" class="achievements-section scroll-reveal">
+        <h2 class="section-title">Achievements & Milestones</h2>
+
+        <div class="achievements-grid">
+            <div class="achievement-card">
+                <div class="achievement-number">50+</div>
+                <div class="achievement-label">Projects Completed</div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-number">30+</div>
+                <div class="achievement-label">Satisfied Clients</div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-number">100K+</div>
+                <div class="achievement-label">GitHub Stars</div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-number">5+</div>
+                <div class="achievement-label">Years Experience</div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-number">10+</div>
+                <div class="achievement-label">Awards Won</div>
+            </div>
+
+            <div class="achievement-card">
+                <div class="achievement-number">50K+</div>
+                <div class="achievement-label">Community Followers</div>
+            </div>
+        </div>
+    </section>
+
+</div>
+
+<!-- FOOTER -->
+<footer>
+    <p>&copy; 2024 John Smith. All rights reserved. | Designed & Built with ❤️</p>
+</footer>
+
+<script>
+    // Mobile Menu Toggle
+    const hamburger = document.getElementById('hamburger');
+    const navMenu = document.getElementById('navMenu');
+
+    hamburger.addEventListener('click', () => {
+        navMenu.classList.toggle('active');
+    });
+
+    // Close menu when link clicked
+    document.querySelectorAll('#navMenu a').forEach(link => {
+        link.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        });
+    });
+
+    // Scroll Reveal Animation
+    const observerOptions = {
+        threshold: 0.1,
+        rootMargin: '0px 0px -50px 0px'
+    };
+
+    const observer = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('visible');
+                observer.unobserve(entry.target);
+            }
+        });
+    }, observerOptions);
+
+    document.querySelectorAll('.scroll-reveal').forEach(element => {
+        observer.observe(element);
+    });
+
+    // Smooth Scroll for Navigation
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener('click', function (e) {
+            e.preventDefault();
+            const target = document.querySelector(this.getAttribute('href'));
+            if (target) {
+                target.scrollIntoView({
+                    behavior: 'smooth',
+                    block: 'start'
+                });
+            }
+        });
+    });
+
+    // Skill Progress Animation
+    const skillProgresses = document.querySelectorAll('.skill-progress');
+    const skillsSection = document.getElementById('skills');
+
+    const skillsObserver = new IntersectionObserver(entries => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                skillProgresses.forEach(progress => {
+                    const width = progress.style.width;
+                    progress.style.width = '0';
+                    setTimeout(() => {
+                        progress.style.width = width;
+                    }, 100);
+                });
+                skillsObserver.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.3 });
+
+    if (skillsSection) {
+        skillsObserver.observe(skillsSection);
+    }
+
+    // Add animation to profile pic
+    const profilePic = document.querySelector('.profile-pic');
+    if (profilePic) {
+        profilePic.addEventListener('mouseenter', function() {
+            this.style.animation = 'none';
+            setTimeout(() => {
+                this.style.animation = 'floatAnim 3s ease-in-out infinite';
+            }, 10);
+        });
+    }
+
+    // Button Click Effects
+    document.querySelectorAll('.btn').forEach(button => {
+        button.addEventListener('click', function(e) {
+            const rect = this.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+
+            const ripple = document.createElement('span');
+            ripple.style.left = x + 'px';
+            ripple.style.top = y + 'px';
+            this.appendChild(ripple);
+
+            setTimeout(() => ripple.remove(), 600);
+        });
+    });
+
+    // Console Message
+    console.log('%c🎨 Welcome to My Portfolio!', 'font-size: 20px; color: #667eea; font-weight: bold;');
+    console.log('%cFeel free to explore and check out my work!', 'font-size: 14px; color: #764ba2;');
+</script>
+
+</body>
+</html>
